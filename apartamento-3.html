@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabaña de Montaña Verde | Monte Zion</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="config.js"></script>
+</head>
+
+<body>
+    <header id="header" role="banner">
+        <div id="header-logo"></div>
+        <nav id="header-nav" class="header__nav" role="navigation" aria-label="Menú principal"></nav>
+        <button id="header-burger" class="header__burger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <main>
+        <div class="detail-hero">
+            <img id="detail-hero-photo" class="detail-hero__photo" src="" alt="">
+            <div class="detail-hero__overlay"></div>
+            <div class="detail-hero__content">
+                <p id="detail-hero-eyebrow" class="detail-hero__eyebrow"></p>
+                <h1 id="detail-hero-title" class="detail-hero__title"></h1>
+            </div>
+        </div>
+        <div class="detail-section">
+            <div class="detail-info">
+                <p id="detail-tech" class="detail-info__tech"></p>
+                <h2 id="detail-title" class="detail-info__title"></h2>
+                <p id="detail-desc" class="detail-info__desc"></p>
+                <p id="detail-price"
+                    style="font-size:1.1rem;font-weight:700;color:var(--color-acento);margin-bottom:24px;"></p>
+                <a href="reservas.html" class="btn-reservar-inline" id="detail-btn-reservar-inline">Reservar Ahora</a>
+            </div>
+            <div>
+                <div id="detail-icons" class="detail-icons-grid"></div>
+            </div>
+        </div>
+        <div id="detail-gallery" class="detail-gallery"></div>
+    </main>
+    <div class="detail-footer-cta">
+        <a id="detail-btn-inicio" href="index.html" class="btn-secondary">← Volver al Inicio</a>
+        <a id="detail-btn-disponibilidad" href="reservas.html" class="btn-reservar-inline">Ver Disponibilidad y
+            Precios</a>
+    </div>
+    <footer id="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p class="footer__city" id="footer-ciudad"></p>
+            <p class="footer__date" id="footer-fecha"></p>
+            <p class="footer__copyright" id="footer-copyright"></p>
+            <a class="footer__privacy" id="footer-privacidad" href="#"></a>
+        </div>
+    </footer>
+    <a id="whatsapp-fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
+    <script src="js/apartments.js"></script>
+</body>
+
+</html>

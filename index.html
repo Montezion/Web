@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO y Analytics se inyectan desde config.js -->
+    <link rel="stylesheet" href="index.css">
+    <script src="config.js"></script>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════
+       HEADER FIJO
+       ══════════════════════════════ -->
+    <header id="header" role="banner">
+        <div id="header-logo"></div>
+        <a href="#" class="btn-reservar-inline header__mobile-btn" id="header-mobile-reservar"
+            aria-label="Reservar">Reservar</a>
+        <nav id="header-nav" class="header__nav" role="navigation" aria-label="Menú principal"></nav>
+        <button id="header-burger" class="header__burger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+
+        <!-- ══════════════════════════════
+         SECCIÓN 1: HERO VIDEO
+         ══════════════════════════════ -->
+        <section id="inicio" aria-label="Video principal">
+            <video id="hero-video" class="hero__video" autoplay loop muted playsinline aria-hidden="true"></video>
+            <script>
+                // Acelerador: Inyecta el video milisegundos despues de que el navegador lee la etiqueta, sin esperar al DOM
+                const v = document.getElementById('hero-video');
+                v.muted = true;
+                v.src = (window.innerWidth < 768) ? C.hero.video_mobile_url : C.hero.video_desktop_url;
+            </script>
+            <div class="hero__overlay" aria-hidden="true"></div>
+            <div class="hero__content">
+                <h1 id="hero-text" class="hero__text-rotativo" aria-live="polite"></h1>
+            </div>
+            <div class="hero__scroll-cta" aria-hidden="true">Descubrí más</div>
+        </section>
+
+        <!-- ══════════════════════════════
+         SECCIÓN 2: MENSAJE BIENVENIDA
+         ══════════════════════════════ -->
+        <section class="section" aria-labelledby="bienvenida-titulo">
+            <div class="container" style="text-align:center; max-width:700px;">
+                <p id="bienvenida-mensaje"
+                    style="font-size:1.1rem; color:var(--color-texto-secundario); line-height:1.9; font-style:italic;">
+                </p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+         SEPARADOR + SECCIÓN 3: APARTAMENTOS
+         ══════════════════════════════ -->
+        <div class="separator">
+            <span class="separator__eyebrow">Monte Zion</span>
+            <div class="separator__lines">
+                <div class="separator__lines-diamond"></div>
+            </div>
+            <h2 id="bienvenida-titulo" class="separator__title"></h2>
+            <div class="separator__lines">
+                <div class="separator__lines-diamond"></div>
+            </div>
+        </div>
+
+        <section id="apartamentos" class="section section--alt" aria-label="Nuestros apartamentos">
+            <div class="container">
+                <div id="apartamentos-grid" class="apartments-grid"></div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+         SEPARADOR + SECCIÓN 4: SERVICIOS
+         ══════════════════════════════ -->
+        <div class="separator">
+            <span class="separator__eyebrow">Lo que ofrecemos</span>
+            <div class="separator__lines">
+                <div class="separator__lines-diamond"></div>
+            </div>
+            <h2 id="servicios-titulo" class="separator__title"></h2>
+            <div class="separator__lines">
+                <div class="separator__lines-diamond"></div>
+            </div>
+            <p id="servicios-subtitulo" class="separator__subtitle"></p>
+        </div>
+
+        <section id="servicios" class="section" aria-label="Servicios">
+            <div class="container">
+                <div id="servicios-grid" class="services-grid"></div>
+                <div id="logistica-grid" class="logistics-grid"></div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+         SEPARADOR + SECCIÓN 5: QUÉ HACER
+         ══════════════════════════════ -->
+        <div class="separator">
+            <span class="separator__eyebrow">Experiencias</span>
+            <div class="separator__lines">
+                <div class="separator__lines-diamond"></div>
+            </div>
+            <h2 id="quehacer-titulo" class="separator__title"></h2>
+            <div class="separator__lines">
+                <div class="separator__lines-diamond"></div>
+            </div>
+            <p id="quehacer-subtitulo" class="separator__subtitle"></p>
+        </div>
+
+        <section id="actividades" class="section section--alt" aria-label="Actividades">
+            <div class="container">
+                <div id="quehacer-grid" class="activities-grid"></div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+         SECCIÓN 6: GALERÍA Y UBICACIÓN
+         ══════════════════════════════ -->
+        <div class="section--alt" style="padding-top: 20px;">
+            <div class="separator">
+                <span class="separator__eyebrow">Imágenes</span>
+                <div class="separator__lines">
+                    <div class="separator__lines-diamond"></div>
+                </div>
+                <h2 id="galeria-titulo" class="separator__title"></h2>
+                <div class="separator__lines">
+                    <div class="separator__lines-diamond"></div>
+                </div>
+            </div>
+
+            <section id="galeria" class="section" style="padding-top:0;" aria-label="Galería de fotos">
+                <div class="gallery-track-wrapper">
+                    <div id="galeria-track" class="gallery-track"></div>
+                </div>
+            </section>
+
+            <!-- ══════════════════════════════
+         SECCIÓN 7: UBICACIÓN
+         ══════════════════════════════ -->
+            <section id="ubicacion" aria-label="Ubicación">
+                <div id="ubicacion-wrapper" class="location-wrapper" role="link" tabindex="0"
+                    aria-label="Ver en Google Maps">
+                    <video id="ubicacion-video" class="location-video" autoplay loop muted playsinline
+                        aria-hidden="true">
+                        <source src="" type="video/mp4">
+                    </video>
+                    <div class="location-overlay">
+                        <h2 id="ubicacion-titulo" class="location-overlay__title"></h2>
+                        <p id="ubicacion-subtitulo" class="location-overlay__sub"></p>
+                        <a id="ubicacion-cta" class="location-overlay__cta" href="#" target="_blank"
+                            rel="noopener noreferrer"></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- ══════════════════════════════
+       FOOTER
+       ══════════════════════════════ -->
+    <footer id="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p class="footer__city" id="footer-ciudad"></p>
+            <p class="footer__date" id="footer-fecha"></p>
+            <div class="footer__socials" id="footer-socials"></div>
+            <div class="footer__actions">
+                <a href="#" class="btn-reservar-inline btn-reservar" id="footer-reservar">Reservar</a>
+            </div>
+            <p class="footer__copyright" id="footer-copyright"></p>
+            <a href="#" class="footer__privacy" id="footer-privacidad"></a>
+            <p class="footer__dev" id="footer-dev"></p>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════
+       WHATSAPP FLOTANTE
+       ══════════════════════════════ -->
+    <a id="whatsapp-fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Escribinos por WhatsApp"></a>
+
+    <!-- Scripts al final -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

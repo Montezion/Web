@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas | Monte Zion - Apart de Montaña</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="config.js"></script>
+</head>
+
+<body class="page-reservas">
+
+    <header id="header" role="banner">
+        <div id="header-logo"></div>
+        <nav id="header-nav" class="header__nav" role="navigation" aria-label="Menú principal"></nav>
+        <button id="header-burger" class="header__burger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+        <div class="reservas-header">
+            <h1 class="reservas-header__title">Reservar tu estadía</h1>
+            <p class="reservas-header__subtitle">Seguí los pasos para asegurar tu lugar en Monte Zion.</p>
+        </div>
+
+        <!-- Indicador de pasos -->
+        <div class="steps-indicator">
+            <div class="step-dot active" id="dot-1">
+                <div class="step-dot__circle">1</div>
+                <span class="step-dot__label">Elegí tu<br>apartamento</span>
+            </div>
+            <div class="step-connector" id="conn-1"></div>
+            <div class="step-dot" id="dot-2">
+                <div class="step-dot__circle">2</div>
+                <span class="step-dot__label">Fechas &<br>huéspedes</span>
+            </div>
+            <div class="step-connector" id="conn-2"></div>
+            <div class="step-dot" id="dot-3">
+                <div class="step-dot__circle">3</div>
+                <span class="step-dot__label">Tus<br>datos</span>
+            </div>
+            <div class="step-connector" id="conn-3"></div>
+            <div class="step-dot" id="dot-4">
+                <div class="step-dot__circle">4</div>
+                <span class="step-dot__label">Confirmar<br>por WhatsApp</span>
+            </div>
+        </div>
+
+        <!-- PASO 1 -->
+        <div id="paso-1" class="step-panel active">
+            <div id="reserva-apts-grid" class="reserva-apts-grid"></div>
+            <div id="paso1-error" class="alert-error"></div>
+            <div class="step-nav step-nav--center">
+                <button id="btn-paso1-siguiente" class="btn-reservar-inline">Continuar →</button>
+            </div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div id="paso-2" class="step-panel">
+            <div class="reserva-step2-grid">
+                <div class="reserva-price-card">
+                    <h3 class="reserva-price-card__title" id="paso2-banner-titulo"></h3>
+                    <div class="reserva-price-card__promo" id="paso2-promo"></div>
+                    <div class="reserva-price-card__includes">
+                        <h4>✓ Incluye</h4>
+                        <ul id="paso2-incluye"></ul>
+                    </div>
+                    <div class="reserva-price-card__includes">
+                        <h4>✗ No incluye</h4>
+                        <ul id="paso2-no-incluye" class="not-includes"></ul>
+                    </div>
+                </div>
+                <div class="reserva-calendar-section">
+                    <h3>Seleccioná tus fechas</h3>
+                    <div class="guests-selector">
+                        <label>Huéspedes:</label>
+                        <div class="guests-selector__controls">
+                            <button class="guests-btn" id="btn-menos" aria-label="Menos huéspedes">–</button>
+                            <span id="guests-count">1</span>
+                            <button class="guests-btn" id="btn-mas" aria-label="Más huéspedes">+</button>
+                        </div>
+                    </div>
+                    <div id="paso2-huespedes-error" class="alert-error"></div>
+                    <div class="date-fields">
+                        <label>Llegada <input type="date" id="fecha-desde" aria-label="Fecha de llegada"></label>
+                        <label>Salida <input type="date" id="fecha-hasta" aria-label="Fecha de salida"></label>
+                    </div>
+                    <div id="paso2-fechas-error" class="alert-error"></div>
+                    <div id="invoice-card" class="invoice-card">
+                        <div class="invoice-card__row"><span>Apartamento</span><span id="inv-apto">–</span></div>
+                        <div class="invoice-card__row"><span>Precio por noche</span><span id="inv-precio">–</span></div>
+                        <div class="invoice-card__row"><span>Noches</span><span id="inv-noches">–</span></div>
+                        <div class="invoice-card__row total"><span>Total</span><span id="inv-total">–</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-nav">
+                <button id="btn-paso2-volver" class="btn-secondary">← Volver</button>
+                <button id="btn-paso2-siguiente" class="btn-reservar-inline">Continuar →</button>
+            </div>
+        </div>
+
+        <!-- PASO 3 -->
+        <div id="paso-3" class="step-panel">
+            <div class="reserva-form">
+                <div class="form-group">
+                    <label for="input-nombre">Nombre Completo <span class="required-badge">*</span></label>
+                    <input type="text" id="input-nombre" placeholder="Juan Pérez" autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="input-whatsapp">WhatsApp <span class="required-badge">*</span></label>
+                    <input type="tel" id="input-whatsapp" placeholder="Ej: 3834XXXXXX" autocomplete="tel">
+                </div>
+                <div class="form-group">
+                    <label for="input-email">Email <span style="opacity:0.6;font-size:0.75em;">(Opcional)</span></label>
+                    <input type="email" id="input-email" placeholder="tu@email.com" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="medio-pago">Medio de Pago <span class="required-badge">*</span></label>
+                    <select id="medio-pago">
+                        <option value="">Seleccioná...</option>
+                    </select>
+                </div>
+                <div class="form-group" style="grid-column:1/-1;">
+                    <label for="input-mensaje">Mensaje adicional <span
+                            style="opacity:0.6;font-size:0.75em;">(Opcional)</span></label>
+                    <textarea id="input-mensaje" rows="3"
+                        placeholder="¿Tenés alguna consulta o pedido especial?"></textarea>
+                </div>
+                <div class="payment-summary-card">
+                    <h3>Resumen de tu reserva</h3>
+                    <div class="payment-row"><span>Apartamento</span><span id="res-apto">–</span></div>
+                    <div class="payment-row"><span>Desde</span><span id="res-desde">–</span></div>
+                    <div class="payment-row"><span>Hasta</span><span id="res-hasta">–</span></div>
+                    <div class="payment-row"><span>Noches</span><span id="res-noches">–</span></div>
+                    <div class="payment-row"><span>Precio / noche</span><span id="res-precio">–</span></div>
+                    <div class="payment-row total"><span>Total</span><span id="res-total">–</span></div>
+                    <div class="payment-row highlight"><span>✅ Seña a abonar (30%)</span><span id="res-sena">–</span>
+                    </div>
+                    <div class="payment-row"><span>Saldo al ingresar (70%)</span><span id="res-saldo">–</span></div>
+                </div>
+            </div>
+            <div id="paso3-error" class="alert-error"></div>
+            <div class="step-nav">
+                <button id="btn-paso3-volver" class="btn-secondary">← Volver</button>
+                <button id="btn-paso3-siguiente" class="btn-reservar-inline">Revisar y Confirmar →</button>
+            </div>
+        </div>
+
+        <!-- PASO 4 -->
+        <div id="paso-4" class="step-panel">
+            <div class="final-summary-card">
+                <div class="final-summary-card__header">
+                    <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;">
+                        Resumen de Reserva</p>
+                    <h3>Monte Zion - Apart de Montaña</h3>
+                </div>
+                <div class="final-summary-card__body">
+                    <div class="summary-row"><span class="summary-row__label">Apartamento</span><span
+                            class="summary-row__value" id="final-apto">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">Entrada</span><span
+                            class="summary-row__value" id="final-desde">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">Salida</span><span
+                            class="summary-row__value" id="final-hasta">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">Huéspedes</span><span
+                            class="summary-row__value" id="final-huesp">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">Medio de pago</span><span
+                            class="summary-row__value" id="final-pago">–</span></div>
+                    <hr class="summary-divider">
+                    <div class="summary-row"><span class="summary-row__label">Total</span><span
+                            class="summary-row__value" id="final-total" style="font-weight:700;">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">Seña (30%)</span><span
+                            class="summary-row__value" id="final-sena"
+                            style="color:var(--color-acento);font-weight:700;">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">Saldo ingreso</span><span
+                            class="summary-row__value" id="final-saldo">–</span></div>
+                    <hr class="summary-divider">
+                    <div class="summary-row"><span class="summary-row__label">Nombre</span><span
+                            class="summary-row__value" id="final-nombre">–</span></div>
+                    <div class="summary-row"><span class="summary-row__label">WhatsApp</span><span
+                            class="summary-row__value" id="final-whatsapp">–</span></div>
+                </div>
+                <div class="final-summary-card__footer">
+                    <p style="font-size:0.83rem;color:var(--color-texto-secundario);max-width:400px;">Al confirmar, se
+                        abrirá WhatsApp con todos los datos de tu reserva. Enviá el mensaje y coordiná el pago de la
+                        seña.</p>
+                    <button id="btn-confirmar-wa" class="btn-reservar-inline"
+                        style="font-size:1rem;padding:14px 32px;">📲 Confirmar por WhatsApp</button>
+                </div>
+            </div>
+            <div class="step-nav step-nav--center" style="margin-top:24px;">
+                <button id="btn-paso4-volver" class="btn-secondary">← Modificar datos</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="reservas-footer">
+        <a href="index.html" class="btn-secondary">← Volver al Inicio</a>
+        <a href="reservas.html" class="btn-secondary">🔄 Nueva búsqueda</a>
+    </div>
+
+    <footer id="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p class="footer__date" id="footer-fecha"></p>
+            <p class="footer__copyright" id="footer-copyright"></p>
+            <a class="footer__privacy" id="footer-privacidad" href="#"></a>
+        </div>
+    </footer>
+
+    <a id="whatsapp-fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
+    <script src="js/reservas.js"></script>
+
+</body>
+
+</html>
