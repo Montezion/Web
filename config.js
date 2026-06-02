@@ -102,7 +102,7 @@ const MONTE_ZION_CONFIG = {
     {
       id: "apart-3",
       titulo_principal: "Apart Carpintero",
-      titulo_secundario: "Grupo de amigos",
+      titulo_secundario: "Grupo de amigos · 3 Huéspedes",
       detalle_breve: "Rodeada de montaña y silencio. Comodidad y privacidad.",
       comodidades_resumen: "3 camas simples · Aire frio-calor · Wi-Fi · Ropa Blanca · Lavarropas · Cocina completa ",
       url_detalle: "apartamento-3.html"
