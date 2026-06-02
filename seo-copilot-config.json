@@ -1,0 +1,109 @@
+{
+  "version": "1.0",
+  "created": "2026-06-02",
+  "updated": "2026-06-02",
+  "setupMode": "full",
+  "business": {
+    "name": "Monte Zion - Apart de Montaña",
+    "description": "Se alquilan cabañas por noche en un entorno natural al pie de la montaña.",
+    "webflowSiteUrl": "https://montezion.com.ar",
+    "primaryGoal": "Más reservas y mejor posicionamiento web local"
+  },
+  "audience": {
+    "primary": "Personas y familias que buscan descansar en un lugar tranquilo, lleno de naturaleza, ya sea que estén de paso por Catamarca o que sea su destino final.",
+    "expertiseLevel": "beginner",
+    "painPoints": [
+      "Estrés de la ciudad",
+      "Necesidad de desconexión del ruido",
+      "Búsqueda de alojamiento Pet Friendly"
+    ],
+    "decisionFactors": [
+      "Vista a la montaña",
+      "Silencio y tranquilidad",
+      "Comodidad",
+      "Hospitalidad y buen trato",
+      "La energía única del lugar"
+    ]
+  },
+  "markets": {
+    "regions": [
+      "Argentina (provincias vecinas como Santiago, Salta, Tucumán, La Rioja, y también Buenos Aires, Santa Fe, Córdoba)"
+    ],
+    "languages": [
+      "es"
+    ],
+    "localNotes": "Usar voseo educado argentino y tono cercano."
+  },
+  "brandVoice": {
+    "tone": [
+      "Silencio",
+      "Comodidad",
+      "Hospitalidad",
+      "Montaña"
+    ],
+    "formality": "conversational",
+    "avoid": [],
+    "avoidAiPatterns": {
+      "phrases": [
+        "game-changer",
+        "let's dive in",
+        "in today's",
+        "revolucionario",
+        "en el día de hoy"
+      ],
+      "structures": [
+        "emoji-bullets",
+        "key-takeaways-header",
+        "final-thoughts-header"
+      ],
+      "formatting": [
+        "excessive-em-dashes",
+        "bold-every-phrase"
+      ]
+    },
+    "humanSignals": {
+      "firstPerson": true,
+      "asideStyle": "Bienvenido a tu casa en la montaña",
+      "specificNumbers": true
+    },
+    "exampleUrls": []
+  },
+  "seo": {
+    "primaryKeywords": [
+      "alojamiento en catamarca",
+      "cabañas al pie de la montaña"
+    ],
+    "competitors": [],
+    "keywordDensity": "natural",
+    "pillarPages": [
+      "https://montezion.com.ar/index.html"
+    ],
+    "preferredSources": [
+      ".gov",
+      ".edu"
+    ],
+    "avoidSources": [],
+    "metaTitleFormat": ": Monte Zion"
+  },
+  "aeo": {
+    "prioritizeCitations": true,
+    "faqStrategy": "mix",
+    "schemaTypes": [
+      "Article",
+      "FAQ",
+      "Product"
+    ],
+    "eeatSignals": {
+      "authorCredentials": false,
+      "companyExperience": "Reseñas en google maps, conformidad de los clientes (todos quieren volver)",
+      "dataCitations": true,
+      "firstHandExperience": true
+    }
+  },
+  "content": {
+    "headingStyle": "title-case",
+    "listStyle": "mixed",
+    "paragraphLength": "short",
+    "ctaStyle": "reserva desde nuestra web o escribinos por whatsapp"
+  }
+}

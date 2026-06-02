@@ -198,7 +198,7 @@
             .replace('{{nombre}}', estado.nombre)
             .replace('{{whatsapp_user}}', estado.whatsapp)
             .replace('{{email_user}}', emailStr)
-            .replace('{{mensaje}}', estado.mensaje || '(sin mensaje adicional)');
+            .replace('{{mensaje}}', estado.mensaje || '(sin mensaje adicional)') + "\n\n";
         return `https://api.whatsapp.com/send?phone=${RC.config_general.whatsapp_destino}&text=${encodeURIComponent(texto)}`;
     }
 
@@ -249,9 +249,19 @@
         document.getElementById('btn-paso2-volver')?.addEventListener('click', () => irAPaso(1));
         document.getElementById('btn-paso2-siguiente')?.addEventListener('click', () => { if (validarPaso2()) { actualizarResumen(); irAPaso(3); } });
         document.getElementById('btn-paso3-volver')?.addEventListener('click', () => irAPaso(2));
-        document.getElementById('btn-paso3-siguiente')?.addEventListener('click', () => { if (validarPaso3()) { rellenarResumenFinal(); irAPaso(4); } });
-        document.getElementById('btn-paso4-volver')?.addEventListener('click', () => irAPaso(3));
-        document.getElementById('btn-confirmar-wa')?.addEventListener('click', () => window.open(generarLinkWhatsApp(), '_blank'));
+        document.getElementById('btn-paso3-siguiente')?.addEventListener('click', () => { 
+            if (validarPaso3()) {
+                // Rellenar datos en el estado local
+                estado.nombre = document.getElementById('input-nombre').value.trim();
+                estado.whatsapp = document.getElementById('input-whatsapp').value.trim();
+                estado.email = document.getElementById('input-email').value.trim();
+                estado.medioPago = document.getElementById('medio-pago').value;
+                estado.mensaje = document.getElementById('input-mensaje').value.trim();
+                
+                // Redirigir directamente a WhatsApp
+                window.open(generarLinkWhatsApp(), '_blank');
+            } 
+        });
 
         const fab = document.getElementById('whatsapp-fab');
         if (fab) {

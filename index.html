@@ -4,9 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO y Analytics se inyectan desde config.js -->
+    <title>Monte Zion | Apart de Montaña en Catamarca</title>
+    <meta name="description" content="Disfrutá de la paz, la hospitalidad y la naturaleza al pie de la montaña en Catamarca. Cabañas y apartamentos totalmente equipados.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Monte Zion | Apart de Montaña en Catamarca">
+    <meta property="og:description" content="Disfrutá de la paz, la hospitalidad y la naturaleza al pie de la montaña en Catamarca. Cabañas y apartamentos totalmente equipados.">
+    <meta property="og:image" content="fotos/social-share.jpg">
+
     <link rel="stylesheet" href="index.css">
     <script src="config.js"></script>
+
+    <!-- Datos Estructurados JSON-LD (SEO/AEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Monte Zion - Apart de Montaña",
+      "description": "Se alquilan cabañas por noche en un entorno natural al pie de la montaña en Catamarca.",
+      "url": "https://montezion.com.ar",
+      "logo": "https://montezion.com.ar/fotos/logo%20azul.png",
+      "telephone": "+5493834334989",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Catamarca",
+        "addressCountry": "AR"
+      },
+      "priceRange": "$$$",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "4.9"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -39,7 +70,7 @@
             </script>
             <div class="hero__overlay" aria-hidden="true"></div>
             <div class="hero__content">
-                <h1 id="hero-text" class="hero__text-rotativo" aria-live="polite"></h1>
+                <h1 id="hero-text" class="hero__text-rotativo" aria-live="polite">Monte Zion | Apart de Montaña en Catamarca</h1>
             </div>
             <div class="hero__scroll-cta" aria-hidden="true">Descubrí más</div>
         </section>
