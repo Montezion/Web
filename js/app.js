@@ -215,7 +215,7 @@
           <p class="apartment-card__subtitle">${apt.titulo_secundario}</p>
           <h3 class="apartment-card__title">${apt.titulo_principal}</h3>
           <p class="apartment-card__desc">${apt.detalle_breve}</p>
-          <p class="apartment-card__amenities">${apt.comodidades_resumen}</p>
+          <p class="apartment-card__amenities">${apt.comodidades_resumen.split('·').map(item => `<span style="white-space: nowrap;">${item.trim()}</span>`).join(' · ')}</p>
           <span class="apartment-card__cta">Ver detalle →</span>
         </div>`;
             gridEl.appendChild(a);
@@ -322,26 +322,74 @@
             lightbox = document.createElement('div');
             lightbox.id = 'lightbox';
             lightbox.className = 'lightbox';
-            lightbox.innerHTML = '<div class="lightbox-close">×</div><img id="lightbox-img" src="" alt="">';
+            lightbox.innerHTML = '<div class="lightbox-close">×</div><img id="lightbox-img" src="" alt="" style="display:none;"><video id="lightbox-video" src="" controls autoplay loop style="display:none; max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 10px 40px rgba(0, 0, 0, 0.8);"></video>';
             document.body.appendChild(lightbox);
-            lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+            lightbox.addEventListener('click', () => {
+                lightbox.classList.remove('open');
+                const videoEl = document.getElementById('lightbox-video');
+                if (videoEl) {
+                    videoEl.pause();
+                    videoEl.src = '';
+                }
+            });
         }
+
+        const esVideo = (url) => /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
 
         const fotos = [...C.galeria.fotos, ...C.galeria.fotos];
         fotos.forEach(src => {
             const card = document.createElement('div');
             card.className = 'gallery-card';
-            const img = new Image();
-            img.src = src;
-            img.alt = 'Monte Zion';
-            img.onerror = () => { card.innerHTML = '<div class="gallery-card__placeholder">🏔️</div>'; };
-            card.appendChild(img);
+            card.style.position = 'relative';
+            
+            let el;
+            if (esVideo(src)) {
+                el = document.createElement('video');
+                el.src = src;
+                el.muted = true;
+                el.loop = true;
+                el.playsInline = true;
+                el.autoplay = true;
+                el.style.width = '100%';
+                el.style.height = '100%';
+                el.style.objectFit = 'cover';
+
+                // Crear el símbolo de video centrado
+                const badge = document.createElement('div');
+                badge.className = 'gallery-card__video-badge';
+                badge.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display: block;">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                `;
+                badge.style.cssText = "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(0, 0, 0, 0.6); border: 2px solid #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; pointer-events: none; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.3);";
+                card.appendChild(badge);
+            } else {
+                el = new Image();
+                el.src = src;
+                el.alt = 'Monte Zion';
+            }
+            
+            el.onerror = () => { card.innerHTML = '<div class="gallery-card__placeholder">🏔️</div>'; };
+            card.appendChild(el);
 
             // Abrir lightbox al hacer clic en PC o tocar en Celular
             card.addEventListener('click', (e) => {
                 if (isDragging) return; // evitar abrir si solo estaba arrastrando
                 e.stopPropagation();
-                document.getElementById('lightbox-img').src = src;
+                const imgEl = document.getElementById('lightbox-img');
+                const videoEl = document.getElementById('lightbox-video');
+                if (esVideo(src)) {
+                    imgEl.style.display = 'none';
+                    imgEl.src = '';
+                    videoEl.src = src;
+                    videoEl.style.display = 'block';
+                } else {
+                    videoEl.style.display = 'none';
+                    videoEl.src = '';
+                    imgEl.src = src;
+                    imgEl.style.display = 'block';
+                }
                 lightbox.classList.add('open');
             });
 
@@ -349,35 +397,129 @@
         });
 
         const wrapper = trackEl.parentElement;
-        let isDragging = false, startX = 0, scrollLeft = 0;
+        trackEl.style.animation = 'none';
 
+        // Detectar si es un F5/recarga para limpiar sessionStorage
+        const navEntries = performance.getEntriesByType('navigation');
+        const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+        if (isReload) {
+            sessionStorage.removeItem('galleryScrollPos');
+        }
+
+        // Obtener el ancho de un slide (ancho de tarjeta + gap) dinámicamente
+        const cardsList = trackEl.querySelectorAll('.gallery-card');
+        let stepWidth = 300; // default fallback (280px + 20px gap)
+        if (cardsList.length > 1) {
+            stepWidth = cardsList[1].offsetLeft - cardsList[0].offsetLeft;
+        }
+
+        let scrollPosition = parseFloat(sessionStorage.getItem('galleryScrollPos')) || 0;
+        let currentIndex = Math.round(scrollPosition / stepWidth);
+        wrapper.scrollLeft = currentIndex * stepWidth;
+
+        let autoScrollTimer = null;
+        let isDragging = false;
+        let isPaused = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        function goToIndex(index, smooth = true) {
+            const halfCount = C.galeria.fotos.length;
+            
+            if (smooth) {
+                wrapper.scrollTo({
+                    left: index * stepWidth,
+                    behavior: 'smooth'
+                });
+            } else {
+                wrapper.scrollLeft = index * stepWidth;
+            }
+
+            currentIndex = index;
+            sessionStorage.setItem('galleryScrollPos', currentIndex * stepWidth);
+
+            // Reinicio invisible al inicio cuando llega a la mitad (fotos duplicadas para loop infinito)
+            if (currentIndex >= halfCount) {
+                setTimeout(() => {
+                    if (!isDragging) {
+                        wrapper.scrollTo({ left: 0, behavior: 'auto' });
+                        currentIndex = 0;
+                        sessionStorage.setItem('galleryScrollPos', 0);
+                    }
+                }, 600); // Esperar a que termine la animación suave
+            }
+        }
+
+        function startAutoScroll() {
+            stopAutoScroll();
+            autoScrollTimer = setInterval(() => {
+                if (!isPaused && !isDragging) {
+                    goToIndex(currentIndex + 1, true);
+                }
+            }, 1500); // Cambiar cada 1.5 segundos
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollTimer) {
+                clearInterval(autoScrollTimer);
+                autoScrollTimer = null;
+            }
+        }
+
+        // Iniciar el auto-scroll
+        startAutoScroll();
+
+        // Pausar en hover
+        wrapper.addEventListener('mouseenter', () => { isPaused = true; });
+        wrapper.addEventListener('mouseleave', () => { isPaused = false; });
+
+        // Mouse Drag
         wrapper.addEventListener('mousedown', e => {
-            isDragging = false; // Mousedown inicia sin ser drag
+            isDragging = true;
             startX = e.pageX - wrapper.offsetLeft;
             scrollLeft = wrapper.scrollLeft;
-            trackEl.style.animationPlayState = 'paused';
+            stopAutoScroll();
         });
-        wrapper.addEventListener('mouseleave', () => { trackEl.style.animationPlayState = ''; });
-        wrapper.addEventListener('mouseup', () => { trackEl.style.animationPlayState = ''; });
+        wrapper.addEventListener('mouseup', () => {
+            isDragging = false;
+            currentIndex = Math.round(wrapper.scrollLeft / stepWidth);
+            goToIndex(currentIndex, true);
+            startAutoScroll();
+        });
+        wrapper.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                currentIndex = Math.round(wrapper.scrollLeft / stepWidth);
+                goToIndex(currentIndex, true);
+                startAutoScroll();
+            }
+        });
         wrapper.addEventListener('mousemove', e => {
-            if (e.buttons !== 1) return;
-            isDragging = true;
+            if (!isDragging) return;
             e.preventDefault();
-            wrapper.scrollLeft = scrollLeft - (e.pageX - wrapper.offsetLeft - startX);
+            const x = e.pageX - wrapper.offsetLeft;
+            const walk = x - startX;
+            wrapper.scrollLeft = scrollLeft - walk;
         });
 
-        // Touch para móviles: Pausar y permitir deslizar
-        wrapper.addEventListener('touchstart', (e) => {
-            trackEl.style.animationPlayState = 'paused';
+        // Touch Drag para móviles
+        wrapper.addEventListener('touchstart', e => {
+            isDragging = true;
             startX = e.touches[0].pageX - wrapper.offsetLeft;
             scrollLeft = wrapper.scrollLeft;
+            stopAutoScroll();
         }, { passive: true });
         wrapper.addEventListener('touchend', () => {
-            trackEl.style.animationPlayState = '';
+            isDragging = false;
+            currentIndex = Math.round(wrapper.scrollLeft / stepWidth);
+            goToIndex(currentIndex, true);
+            startAutoScroll();
         });
-        wrapper.addEventListener('touchmove', (e) => {
-            isDragging = true;
-            wrapper.scrollLeft = scrollLeft - (e.touches[0].pageX - wrapper.offsetLeft - startX);
+        wrapper.addEventListener('touchmove', e => {
+            if (!isDragging) return;
+            const x = e.touches[0].pageX - wrapper.offsetLeft;
+            const walk = x - startX;
+            wrapper.scrollLeft = scrollLeft - walk;
         }, { passive: true });
     }
 

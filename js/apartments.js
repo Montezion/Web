@@ -122,10 +122,22 @@
         const galEl = document.getElementById('detail-gallery');
         if (galEl && apt.galeria_fotos) {
             apt.galeria_fotos.forEach(src => {
-                const img = document.createElement('img');
-                img.src = src; img.alt = 'Monte Zion'; img.className = 'detail-gallery__photo';
-                img.onerror = () => img.style.display = 'none';
-                galEl.appendChild(img);
+                const esVideo = /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(src);
+                let el;
+                if (esVideo) {
+                    el = document.createElement('video');
+                    el.src = src;
+                    el.muted = true;
+                    el.loop = true;
+                    el.playsInline = true;
+                    el.autoplay = true;
+                    el.className = 'detail-gallery__photo';
+                } else {
+                    el = document.createElement('img');
+                    el.src = src; el.alt = 'Monte Zion'; el.className = 'detail-gallery__photo';
+                }
+                el.onerror = () => el.style.display = 'none';
+                galEl.appendChild(el);
             });
         }
 
