@@ -181,7 +181,7 @@ const MONTE_ZION_CONFIG = {
     titulo_seccion: "Galería",
     fotos: [
       "fotos/galeria-01.webp",
-      "fotos/videos/galeria-01.mp4",
+      "fotos/Videos/galeria-01.mp4",
       "fotos/galeria-02.webp",
       "fotos/galeria-03.webp",
       "fotos/galeria-04.webp",

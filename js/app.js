@@ -393,9 +393,9 @@
                 el = new Image();
                 el.src = src;
                 el.alt = 'Monte Zion';
+                el.onerror = () => { card.innerHTML = '<div class="gallery-card__placeholder">🏔️</div>'; };
             }
             
-            el.onerror = () => { card.innerHTML = '<div class="gallery-card__placeholder">🏔️</div>'; };
             card.appendChild(el);
 
             // Abrir lightbox al hacer clic en PC o tocar en Celular
