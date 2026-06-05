@@ -1922,14 +1922,27 @@ body.page-reservas {
     font-size: 0.95rem;
   }
 
+  .header__logo-container {
+    max-width: 45%;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__logo-text {
+    font-size: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .header__mobile-btn {
     display: flex;
     margin-right: 15px;
     padding: 6px 14px;
     font-size: 0.75rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    left: auto;
+    transform: none;
   }
 
   .header__burger {
