@@ -28,8 +28,8 @@ const MONTE_ZION_CONFIG = {
   // 2. CONTACTO
   // ──────────────────────────────────────────────────────────
   contacto: {
-    whatsapp_numero: "5493834334989",   // Formato internacional sin el +
-    email: "reservas@montezion.com.ar",
+    whatsapp_numero: "5493834949319",   // Formato internacional sin el +
+    email: "jacintafaggi1@gmail.com",
     redes: {
       instagram: "https://instagram.com/montezion",
       facebook: "https://facebook.com/montezion"
@@ -157,22 +157,17 @@ const MONTE_ZION_CONFIG = {
     subtitulo: "La naturaleza de Catamarca te espera con aventuras para todos los gustos.",
     actividades: [
       {
-        foto: "fotos/actividad-senderismo.jpg",
+        foto: "fotos/senderismo.webp",
         titulo: "Senderismo",
         descripcion: "Recorré senderos de montaña y descubrí paisajes únicos."
       },
       {
-        foto: "fotos/actividad-cabalgata.jpg",
+        foto: "fotos/cabalgata.webp",
         titulo: "Cabalgatas",
         descripcion: "Explorá las sierras a caballo y conectá con la tradición gaucha catamarqueña."
       },
       {
-        foto: "fotos/actividad-gastronomia.jpg",
-        titulo: "El Rio Miraflores para vos",
-        descripcion: "Disfrutá de un rio único, de la naturaleza y de tu paz interior."
-      },
-      {
-        foto: "fotos/actividad-yoga.jpg",
+        foto: "fotos/yoga_al_amanecer.webp",
         titulo: "Yoga al Amanecer",
         descripcion: "Comenzá el día con energía. Clases de yoga con vista a las sierras."
       }
@@ -185,42 +180,37 @@ const MONTE_ZION_CONFIG = {
   galeria: {
     titulo_seccion: "Galería",
     fotos: [
-      "fotos/galeria-01.jpg",
+      "fotos/galeria-01.webp",
       "fotos/videos/galeria-01.mp4",
-      "fotos/galeria-02.jpg",
-      "fotos/galeria-03.jpg",
-      "fotos/galeria-04.jpg",
-      "fotos/galeria-05.jpg",
-      "fotos/galeria-06.jpg",
-      "fotos/galeria-07.jpg",
-      "fotos/galeria-08.jpg",
-      "fotos/galeria-09.jpg",
-      "fotos/galeria-10.jpg",
-      "fotos/galeria-11.jpg",
-      "fotos/galeria-12.jpg",
-      "fotos/galeria-13.jpg",
-      "fotos/galeria-14.jpg",
-      "fotos/galeria-15.jpg",
-      "fotos/galeria-16.jpg",
-      "fotos/galeria-17.jpg",
-      "fotos/galeria-18.jpg",
-      "fotos/galeria-19.jpg",
-      "fotos/galeria-20.jpg",
-      "fotos/galeria-21.jpg",
-      "fotos/galeria-22.jpg",
-      "fotos/galeria-23.jpg",
-      "fotos/galeria-24.jpg",
-      "fotos/galeria-25.jpg",
-      "fotos/galeria-26.jpg",
-      "fotos/galeria-27.jpg",
-      "fotos/galeria-28.jpg",
-      "fotos/galeria-29.jpg",
-      "fotos/galeria-30.jpg",
-      "fotos/galeria-31.jpg",
-      "fotos/galeria-32.jpg",
-      "fotos/galeria-33.jpg",
-      "fotos/galeria-34.jpg",
-      "fotos/galeria-35.jpg"
+      "fotos/galeria-02.webp",
+      "fotos/galeria-03.webp",
+      "fotos/galeria-04.webp",
+      "fotos/galeria-05.webp",
+      "fotos/galeria-06.webp",
+      "fotos/galeria-07.webp",
+      "fotos/galeria-08.webp",
+      "fotos/galeria-09.webp",
+      "fotos/galeria-10.webp",
+      "fotos/galeria-11.webp",
+      "fotos/galeria-12.webp",
+      "fotos/galeria-13.webp",
+      "fotos/galeria-14.webp",
+      "fotos/galeria-15.webp",
+      "fotos/galeria-16.webp",
+      "fotos/galeria-17.webp",
+      "fotos/galeria-18.webp",
+      "fotos/galeria-19.webp",
+      "fotos/galeria-20.webp",
+      "fotos/galeria-21.webp",
+      "fotos/galeria-22.webp",
+      "fotos/galeria-23.webp",
+      "fotos/galeria-24.webp",
+      "fotos/galeria-25.webp",
+      "fotos/galeria-26.webp",
+      "fotos/galeria-27.webp",
+      "fotos/galeria-28.webp",
+      "fotos/galeria-29.webp",
+      "fotos/galeria-31.webp"
     ]
   },
 
@@ -262,25 +252,25 @@ const MONTE_ZION_CONFIG = {
         { nombre: "Desayuno Regional", icono: "☕" }
       ],
       galeria_fotos: [
-        "fotos/benteveo/benteveo1.jpg",
-        "fotos/benteveo/benteveo2.jpg",
-        "fotos/benteveo/benteveo3.jpg",
-        "fotos/benteveo/benteveo4.jpg",
-        "fotos/benteveo/benteveo5.jpg",
-        "fotos/benteveo/benteveo6.jpg",
-        "fotos/benteveo/benteveo7.jpg",
-        "fotos/benteveo/benteveo8.jpg",
-        "fotos/benteveo/benteveo9.jpg",
-        "fotos/benteveo/benteveo10.jpg",
-        "fotos/benteveo/benteveo11.jpg",
-        "fotos/benteveo/benteveo12.jpg",
-        "fotos/benteveo/benteveo13.jpg",
-        "fotos/benteveo/benteveo14.jpg"
+        "fotos/benteveo/benteveo1.webp",
+        "fotos/benteveo/benteveo2.webp",
+        "fotos/benteveo/benteveo3.webp",
+        "fotos/benteveo/benteveo4.webp",
+        "fotos/benteveo/benteveo5.webp",
+        "fotos/benteveo/benteveo6.webp",
+        "fotos/benteveo/benteveo7.webp",
+        "fotos/benteveo/benteveo8.webp",
+        "fotos/benteveo/benteveo9.webp",
+        "fotos/benteveo/benteveo10.webp",
+        "fotos/benteveo/benteveo11.webp",
+        "fotos/benteveo/benteveo12.webp",
+        "fotos/benteveo/benteveo13.webp",
+        "fotos/benteveo/benteveo14.webp"
       ]
     },
     {
       id: "apart-2",
-      hero_foto: "fotos/colibri/colibri-hero.jpg",
+      hero_foto: "fotos/colibri/colibri-hero.webp",
       titulo_principal: "Colibrí",
       info_tecnica: "Hasta 5 huéspedes · 70 m² - Cama Matrimonial + 3 simples",
       descripcion_larga: "Diseñado para que toda la familia disfrute. El Apart Colibrí ofrece amplios espacios, una cocina completa y un deck exterior perfecto para compartir atardeceres únicos. La naturaleza a tu alrededor y el fantástico balcon a la montaña.",
@@ -293,20 +283,20 @@ const MONTE_ZION_CONFIG = {
         { nombre: "Desayuno Regional", icono: "☕" }
       ],
       galeria_fotos: [
-        "fotos/colibri/colibri1.jpg",
-        "fotos/colibri/colibri2.jpg",
-        "fotos/colibri/colibri3.jpg",
-        "fotos/colibri/colibri4.jpg",
-        "fotos/colibri/colibri5.jpg",
-        "fotos/colibri/colibri6.jpg",
-        "fotos/colibri/colibri7.jpg",
-        "fotos/colibri/colibri8.jpg",
-        "fotos/colibri/colibri9.jpg",
+        "fotos/colibri/colibri1.webp",
+        "fotos/colibri/colibri2.webp",
+        "fotos/colibri/colibri3.webp",
+        "fotos/colibri/colibri4.webp",
+        "fotos/colibri/colibri5.webp",
+        "fotos/colibri/colibri6.webp",
+        "fotos/colibri/colibri7.webp",
+        "fotos/colibri/colibri8.webp",
+        "fotos/colibri/colibri9.webp"
       ]
     },
     {
       id: "apart-3",
-      hero_foto: "fotos/carpintero/carpintero-hero.jpg",
+      hero_foto: "fotos/carpintero/carpintero-hero.webp",
       titulo_principal: "Carpintero",
       info_tecnica: "Hasta 3 huéspedes · 60 m² · 3 camas simples",
       descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Aca te puedes conectar con Tigo mismo facilmente",
@@ -318,22 +308,22 @@ const MONTE_ZION_CONFIG = {
         { nombre: "Desayuno Regional", icono: "☕" }
       ],
       galeria_fotos: [
-        "fotos/carpintero/carpintero1.jpg",
-        "fotos/carpintero/carpintero2.jpg",
-        "fotos/carpintero/carpintero3.jpg",
-        "fotos/carpintero/carpintero4.jpg",
-        "fotos/carpintero/carpintero5.jpg",
-        "fotos/carpintero/carpintero6.jpg",
-        "fotos/carpintero/carpintero7.jpg",
-        "fotos/carpintero/carpintero8.jpg",
-        "fotos/carpintero/carpintero9.jpg",
-        "fotos/carpintero/carpintero10.jpg",
-        "fotos/carpintero/carpintero11.jpg",
-        "fotos/carpintero/carpintero12.jpg",
-        "fotos/carpintero/carpintero13.jpg",
-        "fotos/carpintero/carpintero14.jpg",
-        "fotos/carpintero/carpintero15.jpg",
-        "fotos/carpintero/carpintero16.jpg"
+        "fotos/carpintero/carpintero1.webp",
+        "fotos/carpintero/carpintero2.webp",
+        "fotos/carpintero/carpintero3.webp",
+        "fotos/carpintero/carpintero4.webp",
+        "fotos/carpintero/carpintero5.webp",
+        "fotos/carpintero/carpintero6.webp",
+        "fotos/carpintero/carpintero7.webp",
+        "fotos/carpintero/carpintero8.webp",
+        "fotos/carpintero/carpintero9.webp",
+        "fotos/carpintero/carpintero10.webp",
+        "fotos/carpintero/carpintero11.webp",
+        "fotos/carpintero/carpintero12.webp",
+        "fotos/carpintero/carpintero13.webp",
+        "fotos/carpintero/carpintero14.webp",
+        "fotos/carpintero/carpintero15.webp",
+        "fotos/carpintero/carpintero16.webp"
       ]
     }
   ],
@@ -345,7 +335,7 @@ const MONTE_ZION_CONFIG = {
     config_general: {
       porcentaje_sena: 0.30,  // 30% de seña
       porcentaje_saldo: 0.70,  // 70% saldo al ingresar
-      whatsapp_destino: "5493834034056",
+      whatsapp_destino: "5493834949319",
       moneda: "$"
     },
     paso_1_seleccion: [

@@ -4,6 +4,31 @@
  */
 
 (function () {
+    function mostrarErrorPantalla(detalles = '') {
+        const injectError = () => {
+            const errorDiv = document.createElement('div');
+            errorDiv.id = 'config-error-overlay';
+            errorDiv.style.cssText = "position: fixed; inset: 0; background: #1a0f0f; color: #ff5252; z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: system-ui, -apple-system, sans-serif; padding: 20px; text-align: center;";
+            errorDiv.innerHTML = `
+                <div style="font-size: 5rem; margin-bottom: 20px;">⚠️</div>
+                <h1 style="font-size: 2rem; margin: 0 0 10px; font-weight: 700; text-transform: uppercase;">error en archivo de configuracion</h1>
+                <p style="font-size: 1.1rem; color: #ffbaba; max-width: 600px; margin: 0 0 20px; line-height: 1.5;">El archivo config.js contiene errores de sintaxis o no se pudo cargar correctamente. Por favor revisá la sintaxis de comas, corchetes y llaves.</p>
+                ${detalles ? `<pre style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; text-align: left; color: #ffcdd2; max-width: 90%; overflow-x: auto; border: 1px solid rgba(255,82,82,0.3);">${detalles}</pre>` : ''}
+            `;
+            document.body.appendChild(errorDiv);
+        };
+
+        if (document.body) {
+            injectError();
+        } else {
+            document.addEventListener('DOMContentLoaded', injectError);
+        }
+    }
+
+    if (typeof MONTE_ZION_CONFIG === 'undefined' || !MONTE_ZION_CONFIG) {
+        mostrarErrorPantalla('MONTE_ZION_CONFIG no está definido. Probablemente hay un error de sintaxis en config.js');
+        return;
+    }
     const C = MONTE_ZION_CONFIG;
 
     // ── 1. Aplicar paleta de colores al :root ────────────────
@@ -603,18 +628,23 @@
 
     // ── INIT ─────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', () => {
-        aplicarTema();
-        inyectarAnalytics();
-        construirHeader();
-        construirHero();
-        construirBienvenida();
-        construirApartamentos();
-        construirServicios();
-        construirQueHacer();
-        construirGaleria();
-        construirUbicacion();
-        construirFooter();
-        construirWhatsAppFAB();
+        try {
+            aplicarTema();
+            inyectarAnalytics();
+            construirHeader();
+            construirHero();
+            construirBienvenida();
+            construirApartamentos();
+            construirServicios();
+            construirQueHacer();
+            construirGaleria();
+            construirUbicacion();
+            construirFooter();
+            construirWhatsAppFAB();
+        } catch (err) {
+            console.error(err);
+            mostrarErrorPantalla(err.message);
+        }
     });
 
 })();
