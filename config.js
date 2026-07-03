@@ -62,8 +62,8 @@ const MONTE_ZION_CONFIG = {
   // 4. SECCIÓN HERO (VIDEO Y TEXTOS DINÁMICOS)
   // ──────────────────────────────────────────────────────────
   hero: {
-    video_desktop_url: "videos/hero-pc.mp4",
-    video_mobile_url: "videos/hero-celular.mp4",
+    video_desktop_url: "videos/HERO_MONTEZION_pc2000.mp4",
+    video_mobile_url: "videos/HERO_MONTEZION_cel2000.mp4",
     textos_rotativos: [
       "Tu refugio en el corazón de la montaña",
       "rodeado de naturaleza",
