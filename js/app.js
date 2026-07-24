@@ -33,8 +33,8 @@
 
     // ── 1. Aplicar paleta de colores al :root ────────────────
     function aplicarTema() {
-        const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-        const paleta = C.apariencia.paletas[temaActivo] || C.apariencia.paletas[C.apariencia.tema_activo];
+        localStorage.removeItem('mz_theme');
+        const paleta = C.apariencia.paletas[C.apariencia.tema_activo] || Object.values(C.apariencia.paletas)[0];
         if (!paleta) return;
         const root = document.documentElement;
         Object.entries(paleta).forEach(([varName, value]) => {
@@ -114,28 +114,6 @@
         };
         logoEl.appendChild(img);
 
-        // --- SELECTOR TEMPORAL DE TEMAS ---
-        if (!document.getElementById('theme-switcher')) {
-            const select = document.createElement('select');
-            select.id = 'theme-switcher';
-            select.className = 'theme-switcher-nav';
-
-            const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-            Object.keys(C.apariencia.paletas).forEach(tema => {
-                const opt = document.createElement('option');
-                opt.value = tema;
-                opt.textContent = tema.replace(/_/g, ' ');
-                if (tema === temaActivo) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                localStorage.setItem('mz_theme', e.target.value);
-                aplicarTema();
-            });
-            navEl.appendChild(select);
-        }
-        // ---------------------------------
 
         h.menu_items.forEach(item => {
             const a = document.createElement('a');

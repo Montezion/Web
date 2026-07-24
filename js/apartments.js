@@ -15,8 +15,8 @@
     }
 
     function aplicarTema() {
-        const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-        const paleta = C.apariencia.paletas[temaActivo] || C.apariencia.paletas[C.apariencia.tema_activo];
+        localStorage.removeItem('mz_theme');
+        const paleta = C.apariencia.paletas[C.apariencia.tema_activo] || Object.values(C.apariencia.paletas)[0];
         if (paleta) Object.entries(paleta).forEach(([v, val]) => document.documentElement.style.setProperty(v, val));
     }
 
@@ -45,28 +45,6 @@
                 logoEl.replaceChild(span, img);
             };
             logoEl.appendChild(img);
-        }
-
-        // --- SELECTOR TEMPORAL DE TEMAS ---
-        if (navEl && !document.getElementById('theme-switcher')) {
-            const select = document.createElement('select');
-            select.id = 'theme-switcher';
-            select.className = 'theme-switcher-nav';
-
-            const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-            Object.keys(C.apariencia.paletas).forEach(tema => {
-                const opt = document.createElement('option');
-                opt.value = tema;
-                opt.textContent = tema.replace(/_/g, ' ');
-                if (tema === temaActivo) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            select.addEventListener('change', (e) => {
-                localStorage.setItem('mz_theme', e.target.value);
-                aplicarTema();
-            });
-            navEl.appendChild(select);
         }
         // ---------------------------------
 
@@ -163,6 +141,7 @@
         if (btnDisp) btnDisp.href = `reservas.html?apt=${aptId}`;
 
         // ── WHATSAPP FAB ──────────────────────────────────────
+        const fab = document.getElementById('whatsapp-fab');
         if (fab) {
             fab.href = `https://wa.me/${C.contacto.whatsapp_numero}?text=Hola%20Monte%20Zion!%20Consulto%20por%20${encodeURIComponent(apt.titulo_principal)}`;
             fab.target = '_blank';

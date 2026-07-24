@@ -46,8 +46,8 @@
 
             // Tema
             function aplicarTema() {
-                const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-                const paleta = C.apariencia.paletas[temaActivo] || C.apariencia.paletas[C.apariencia.tema_activo];
+                localStorage.removeItem('mz_theme');
+                const paleta = C.apariencia.paletas[C.apariencia.tema_activo] || Object.values(C.apariencia.paletas)[0];
                 if (paleta) Object.entries(paleta).forEach(([v, val]) => document.documentElement.style.setProperty(v, val));
             }
             aplicarTema();
@@ -73,29 +73,6 @@
                 img.src = h.logo_url; img.alt = h.logo_alt; img.className = 'header__logo';
                 img.onerror = () => { const s = document.createElement('span'); s.className = 'header__logo-text'; s.textContent = h.logo_texto_fallback || 'Monte Zion'; logoEl.replaceChild(s, img); };
                 logoEl.appendChild(img);
-
-                // --- SELECTOR TEMPORAL DE TEMAS ---
-                if (!document.getElementById('theme-switcher')) {
-                    const select = document.createElement('select');
-                    select.id = 'theme-switcher';
-                    select.className = 'theme-switcher-nav';
-
-                    const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-                    Object.keys(C.apariencia.paletas).forEach(tema => {
-                        const opt = document.createElement('option');
-                        opt.value = tema;
-                        opt.textContent = tema.replace(/_/g, ' ');
-                        if (tema === temaActivo) opt.selected = true;
-                        select.appendChild(opt);
-                    });
-
-                    select.addEventListener('change', (e) => {
-                        localStorage.setItem('mz_theme', e.target.value);
-                        aplicarTema();
-                    });
-                    navEl.appendChild(select);
-                }
-                // ---------------------------------
 
                 [{ etiqueta: 'Inicio', url: 'index.html' }, { etiqueta: 'Reservar', url: 'reservas.html', clase: 'btn-reservar' }].forEach(l => {
                     const a = document.createElement('a'); a.href = l.url; a.className = l.clase || 'nav__link'; a.textContent = l.etiqueta; navEl.appendChild(a);

@@ -2135,31 +2135,3 @@ body.page-reservas {
 body:not(.page-reservas) main {
   padding-top: 72px;
 }
-
-/* SELECTOR DE TEMAS TEMPORAL */
-.theme-switcher-nav {
-  background: var(--color-fondo-secundario);
-  color: var(--color-texto-principal);
-  border: 1px solid var(--color-acento);
-  border-radius: 4px;
-  padding: 8px 12px;
-  margin-right: 15px;
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-  appearance: auto;
-}
-
-.theme-switcher-nav:hover {
-  border-color: var(--color-acento-hover);
-}
-
-@media (max-width: 768px) {
-  .theme-switcher-nav {
-    margin: 10px 0;
-    width: 100%;
-  }
-}
