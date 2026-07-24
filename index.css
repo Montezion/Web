@@ -568,7 +568,7 @@ h4 {
    ═══════════════════════════════════════════════════════════ */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -2036,7 +2036,12 @@ body.page-reservas {
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .service-card {
+    padding: 20px 12px;
   }
 
   .logistics-card {

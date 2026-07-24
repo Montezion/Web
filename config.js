@@ -135,6 +135,25 @@ const MONTE_ZION_CONFIG = {
         titulo: "Actividades",
         icono: "hiking",
         especificaciones: ["Senderismo", "Rio a 10 minutos", "Cabalgatas", "Yoga al amanecer"]
+      },
+      {
+        titulo: "Traslados y Excursiones",
+        icono: "commute",
+        especificaciones: [
+          "Coordinación de traslados al aeropuerto y ciudad de Catamarca",
+          "Excursiones para recorrer distintos paisajes y destinos de la provincia",
+          "Servicios brindados por prestadores externos (sujetos a disponibilidad)"
+        ]
+      },
+      {
+        titulo: "Bienestar y Armonía",
+        icono: "spa",
+        especificaciones: [
+          "Masajes relajantes",
+          "Reflexología",
+          "Estética Facial",
+          "Tai Chi"
+        ]
       }
     ]
   },
