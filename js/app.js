@@ -336,27 +336,186 @@
         if (tEl) tEl.textContent = C.galeria.titulo_seccion;
         if (!trackEl) return;
 
+        const esVideo = (url) => /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
+        let currentLightboxIndex = 0;
+        let currentGalleryList = C.galeria.fotos;
+
+        // ── LIGHTBOX ELEMENT & NAVEGACIÓN ───────────────────────
         let lightbox = document.getElementById('lightbox');
         if (!lightbox) {
             lightbox = document.createElement('div');
             lightbox.id = 'lightbox';
             lightbox.className = 'lightbox';
-            lightbox.innerHTML = '<div class="lightbox-close">×</div><img id="lightbox-img" src="" alt="" style="display:none;"><video id="lightbox-video" src="" controls autoplay loop style="display:none; max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 10px 40px rgba(0, 0, 0, 0.8);"></video>';
+            lightbox.innerHTML = `
+                <button class="lightbox-close" aria-label="Cerrar">✕</button>
+                <button class="lightbox-prev" aria-label="Anterior">‹</button>
+                <button class="lightbox-next" aria-label="Siguiente">›</button>
+                <div class="lightbox-content">
+                    <img id="lightbox-img" src="" alt="Monte Zion" style="display:none;">
+                    <video id="lightbox-video" src="" controls autoplay loop style="display:none;"></video>
+                </div>
+                <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+            `;
             document.body.appendChild(lightbox);
-            lightbox.addEventListener('click', () => {
+
+            const cerrarLightbox = () => {
                 lightbox.classList.remove('open');
                 const videoEl = document.getElementById('lightbox-video');
                 if (videoEl) {
                     videoEl.pause();
                     videoEl.src = '';
                 }
+            };
+
+            lightbox.querySelector('.lightbox-close').addEventListener('click', (e) => {
+                e.stopPropagation();
+                cerrarLightbox();
+            });
+
+            lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+                e.stopPropagation();
+                renderLightboxItem(currentLightboxIndex - 1);
+            });
+
+            lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
+                e.stopPropagation();
+                renderLightboxItem(currentLightboxIndex + 1);
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                    cerrarLightbox();
+                }
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') renderLightboxItem(currentLightboxIndex - 1);
+                if (e.key === 'ArrowRight') renderLightboxItem(currentLightboxIndex + 1);
+                if (e.key === 'Escape') cerrarLightbox();
+            });
+
+            // Touch Swipe para Lightbox
+            let touchStartX = 0;
+            let touchEndX = 0;
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diffX = touchStartX - touchEndX;
+                if (Math.abs(diffX) > 40) {
+                    if (diffX > 0) renderLightboxItem(currentLightboxIndex + 1); // Swipe izquierda -> Siguiente
+                    else renderLightboxItem(currentLightboxIndex - 1); // Swipe derecha -> Anterior
+                }
+            }, { passive: true });
+        }
+
+        function renderLightboxItem(index) {
+            if (!currentGalleryList || currentGalleryList.length === 0) return;
+            currentLightboxIndex = (index + currentGalleryList.length) % currentGalleryList.length;
+            const src = currentGalleryList[currentLightboxIndex];
+
+            const imgEl = document.getElementById('lightbox-img');
+            const videoEl = document.getElementById('lightbox-video');
+            const counterEl = document.getElementById('lightbox-counter');
+
+            if (counterEl) {
+                counterEl.textContent = `${currentLightboxIndex + 1} / ${currentGalleryList.length}`;
+            }
+
+            if (esVideo(src)) {
+                imgEl.style.display = 'none';
+                imgEl.src = '';
+                videoEl.src = src;
+                videoEl.style.display = 'block';
+                videoEl.play().catch(() => {});
+            } else {
+                videoEl.style.display = 'none';
+                videoEl.pause();
+                videoEl.src = '';
+                imgEl.src = src;
+                imgEl.style.display = 'block';
+            }
+        }
+
+        function abrirLightbox(index, list = C.galeria.fotos) {
+            currentGalleryList = list;
+            currentLightboxIndex = index % currentGalleryList.length;
+            renderLightboxItem(currentLightboxIndex);
+            lightbox.classList.add('open');
+        }
+
+        // ── MODAL GALERÍA COMPLETA ("VER TODAS") ─────────────────
+        function abrirModalGaleriaCompleta() {
+            let modal = document.getElementById('modal-galeria-completa');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'modal-galeria-completa';
+                modal.className = 'full-gallery-modal';
+                modal.innerHTML = `
+                    <div class="full-gallery-header">
+                        <h3 class="full-gallery-title">Galería Completa (${C.galeria.fotos.length})</h3>
+                        <button class="full-gallery-close" aria-label="Cerrar">✕</button>
+                    </div>
+                    <div class="full-gallery-body">
+                        <div class="full-gallery-grid" id="full-gallery-grid"></div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                modal.querySelector('.full-gallery-close').addEventListener('click', () => {
+                    modal.classList.remove('open');
+                });
+
+                const grid = modal.querySelector('#full-gallery-grid');
+                C.galeria.fotos.forEach((src, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'full-gallery-item';
+
+                    if (esVideo(src)) {
+                        item.innerHTML = `
+                            <video src="${src}" muted loop playsinline></video>
+                            <div class="gallery-card__video-badge">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display: block;">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        `;
+                    } else {
+                        item.innerHTML = `<img src="${src}" alt="Monte Zion" loading="lazy">`;
+                    }
+
+                    item.addEventListener('click', () => {
+                        abrirLightbox(idx, C.galeria.fotos);
+                    });
+
+                    grid.appendChild(item);
+                });
+            }
+            modal.classList.add('open');
+        }
+
+        // ── BOTÓN "VER TODAS" ─────────────────────────────────────
+        const sectionGaleria = document.getElementById('galeria');
+        if (sectionGaleria && !document.getElementById('btn-ver-todas-galeria')) {
+            const ctaDiv = document.createElement('div');
+            ctaDiv.className = 'gallery-cta-wrapper';
+            ctaDiv.innerHTML = `
+                <button id="btn-ver-todas-galeria" class="btn-ver-todas">
+                    Ver todas <span class="material-symbols-outlined">grid_view</span>
+                </button>
+            `;
+            sectionGaleria.appendChild(ctaDiv);
+
+            document.getElementById('btn-ver-todas-galeria').addEventListener('click', () => {
+                abrirModalGaleriaCompleta();
             });
         }
 
-        const esVideo = (url) => /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
-
         const fotos = [...C.galeria.fotos, ...C.galeria.fotos];
-        fotos.forEach(src => {
+        fotos.forEach((src, realIdx) => {
             const card = document.createElement('div');
             card.className = 'gallery-card';
             card.style.position = 'relative';
@@ -373,7 +532,6 @@
                 el.style.height = '100%';
                 el.style.objectFit = 'cover';
 
-                // Crear el símbolo de video centrado
                 const badge = document.createElement('div');
                 badge.className = 'gallery-card__video-badge';
                 badge.innerHTML = `
@@ -392,24 +550,11 @@
             
             card.appendChild(el);
 
-            // Abrir lightbox al hacer clic en PC o tocar en Celular
             card.addEventListener('click', (e) => {
-                if (isDragging) return; // evitar abrir si solo estaba arrastrando
+                if (isDragging) return;
                 e.stopPropagation();
-                const imgEl = document.getElementById('lightbox-img');
-                const videoEl = document.getElementById('lightbox-video');
-                if (esVideo(src)) {
-                    imgEl.style.display = 'none';
-                    imgEl.src = '';
-                    videoEl.src = src;
-                    videoEl.style.display = 'block';
-                } else {
-                    videoEl.style.display = 'none';
-                    videoEl.src = '';
-                    imgEl.src = src;
-                    imgEl.style.display = 'block';
-                }
-                lightbox.classList.add('open');
+                const originalIdx = realIdx % C.galeria.fotos.length;
+                abrirLightbox(originalIdx, C.galeria.fotos);
             });
 
             trackEl.appendChild(card);
@@ -418,14 +563,12 @@
         const wrapper = trackEl.parentElement;
         trackEl.style.animation = 'none';
 
-        // Detectar si es un F5/recarga para limpiar sessionStorage
         const navEntries = performance.getEntriesByType('navigation');
         const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
         if (isReload) {
             sessionStorage.removeItem('galleryScrollPos');
         }
 
-        // Obtener el ancho de un slide (ancho de tarjeta + gap) dinámicamente
         const cardsList = trackEl.querySelectorAll('.gallery-card');
         let stepWidth = 300; // default fallback (280px + 20px gap)
         if (cardsList.length > 1) {
