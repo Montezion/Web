@@ -292,6 +292,30 @@
         if (footCopyEl) footCopyEl.textContent = C.footer.copyright;
         const footPrivEl = document.getElementById('footer-privacidad');
         if (footPrivEl) { footPrivEl.textContent = C.legal.texto_footer_privacidad; footPrivEl.href = C.legal.url_privacidad; }
+
+        function construirScrollTopFAB() {
+            let btn = document.getElementById('scroll-top-btn');
+            if (!btn) {
+                btn = document.createElement('button');
+                btn.id = 'scroll-top-btn';
+                btn.className = 'scroll-top-btn';
+                btn.setAttribute('aria-label', 'Volver arriba');
+                btn.innerHTML = '<span class="material-symbols-outlined">keyboard_arrow_up</span>';
+                document.body.appendChild(btn);
+            }
+
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            const toggleVisibility = () => {
+                btn.classList.toggle('visible', window.scrollY > 200);
+            };
+
+            window.addEventListener('scroll', toggleVisibility);
+            toggleVisibility();
+        }
+        construirScrollTopFAB();
     });
 
 })();
