@@ -34,7 +34,7 @@
     // ── 1. Aplicar paleta de colores al :root ────────────────
     function aplicarTema() {
         const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-        const paleta = C.apariencia.paletas[temaActivo];
+        const paleta = C.apariencia.paletas[temaActivo] || C.apariencia.paletas[C.apariencia.tema_activo];
         if (!paleta) return;
         const root = document.documentElement;
         Object.entries(paleta).forEach(([varName, value]) => {

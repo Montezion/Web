@@ -16,7 +16,7 @@
 
     function aplicarTema() {
         const temaActivo = localStorage.getItem('mz_theme') || C.apariencia.tema_activo;
-        const paleta = C.apariencia.paletas[temaActivo];
+        const paleta = C.apariencia.paletas[temaActivo] || C.apariencia.paletas[C.apariencia.tema_activo];
         if (paleta) Object.entries(paleta).forEach(([v, val]) => document.documentElement.style.setProperty(v, val));
     }
 
