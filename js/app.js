@@ -300,8 +300,9 @@
             C.servicios.tarjetas.forEach(t => {
                 const div = document.createElement('div');
                 div.className = 'service-card';
+                const iconHtml = (t.icono && t.icono.includes('<')) ? t.icono : `<span class="material-symbols-outlined">${t.icono}</span>`;
                 div.innerHTML = `
-          <div class="service-card__icon">${t.icono}</div>
+          <div class="service-card__icon">${iconHtml}</div>
           <h3 class="service-card__title">${t.titulo}</h3>
           <ul class="service-card__list">
             ${t.especificaciones.map(e => `<li class="service-card__item">${e}</li>`).join('')}
@@ -314,8 +315,9 @@
             C.info_logistica.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'logistics-card' + (item.es_pet_friendly ? ' logistics-card--pet' : '');
+                const iconHtml = (item.icono && item.icono.includes('<')) ? item.icono : `<span class="material-symbols-outlined">${item.icono}</span>`;
                 div.innerHTML = `
-          <span class="logistics-card__icon">${item.icono}</span>
+          <span class="logistics-card__icon">${iconHtml}</span>
           <span class="logistics-card__title">${item.titulo}</span>
           <p class="logistics-card__text">${item.texto}</p>`;
                 logEl.appendChild(div);

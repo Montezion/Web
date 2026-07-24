@@ -591,6 +591,13 @@ h4 {
   color: var(--color-acento);
   margin-bottom: 12px;
   letter-spacing: -0.05em;
+  display: flex;
+  justify-content: center;
+}
+
+.service-card__icon .material-symbols-outlined {
+  font-size: 2.4rem;
+  color: var(--color-acento);
 }
 
 .service-card__title {
@@ -656,6 +663,12 @@ h4 {
 
 .logistics-card__icon {
   font-size: 1.2rem;
+  color: var(--color-acento);
+}
+
+.logistics-card__icon .material-symbols-outlined {
+  font-size: 1.7rem;
+  color: var(--color-acento);
 }
 
 .logistics-card__title {
@@ -1195,7 +1208,16 @@ h4 {
 
 .detail-icon-item__icon {
   font-size: 1.8rem;
+  color: var(--color-acento);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-icon-item__icon .material-symbols-outlined {
+  font-size: 2.2rem;
+  color: var(--color-acento);
 }
 
 .detail-icon-item__name {

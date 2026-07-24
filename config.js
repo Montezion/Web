@@ -118,22 +118,22 @@ const MONTE_ZION_CONFIG = {
     tarjetas: [
       {
         titulo: "Comodidades",
-        icono: "✦",
+        icono: "hotel",
         especificaciones: ["Wi-Fi", "Las medialunas más ricas", "Aire Frio/Calor", "Puedes traer tu mascota"]
       },
       {
         titulo: "Equipamiento",
-        icono: "✦",
+        icono: "countertops",
         especificaciones: ["Cocina completa", "Elementos de Higiene personal", "Vajilla completa", "Ropa blanca"]
       },
       {
         titulo: "Espacios",
-        icono: "✦",
+        icono: "landscape",
         especificaciones: ["Balcon con vista a la montaña", "Rio a 10 minutos a pie", "Senderos para caminatas", "Mirador de estrellas"]
       },
       {
         titulo: "Actividades",
-        icono: "✦",
+        icono: "hiking",
         especificaciones: ["Senderismo", "Rio a 10 minutos", "Cabalgatas", "Yoga al amanecer"]
       }
     ]
@@ -143,10 +143,10 @@ const MONTE_ZION_CONFIG = {
   // 8. INFO LOGÍSTICA (micro-tarjetas bajo servicios)
   // ──────────────────────────────────────────────────────────
   info_logistica: [
-    { icono: "🕒", titulo: "Check-in", texto: "A partir de las 13:00 hs" },
-    { icono: "🏠", titulo: "Check-Out", texto: "Hasta las 11:00 hs" },
-    { icono: "🚭", titulo: "Libre de humo", texto: "Espacio cuidado libre de humo" },
-    { icono: "🐾", titulo: "Mascotas", texto: "¡Somos Pet Friendly! Bajo petición previa.", es_pet_friendly: true }
+    { icono: "schedule", titulo: "Check-in", texto: "A partir de las 13:00 hs" },
+    { icono: "key", titulo: "Check-Out", texto: "Hasta las 11:00 hs" },
+    { icono: "smoke_free", titulo: "Libre de humo", texto: "Espacio cuidado libre de humo" },
+    { icono: "pets", titulo: "Mascotas", texto: "¡Somos Pet Friendly! Bajo petición previa.", es_pet_friendly: true }
   ],
 
   // ──────────────────────────────────────────────────────────
@@ -245,11 +245,11 @@ const MONTE_ZION_CONFIG = {
       info_tecnica: "Hasta 2 huéspedes · 45 m² · Cama Doble plaza",
       descripcion_larga: "Sumérgete en la experiencia definitiva de la montaña. El Apart Benteveo combina discreción con la autenticidad natural. Desde su amplio balcón, su inigualable terraza, las vistas a las cumbres de Catamarca te acompañarán en cada momento. Un refugio íntimo y exclusivo, diseñado para parejas que buscan reconectarse con lo esencial.",
       servicios_iconos: [
-        { nombre: "Vistas Panorámicas", icono: "⛰️" },
-        { nombre: "Climatización", icono: "🌡️" },
-        { nombre: "Wi-Fi", icono: "📶" },
-        { nombre: "Cocina Equipada", icono: "🍳" },
-        { nombre: "Desayuno Regional", icono: "☕" }
+        { nombre: "Vistas Panorámicas", icono: "landscape" },
+        { nombre: "Climatización", icono: "thermostat" },
+        { nombre: "Wi-Fi", icono: "wifi" },
+        { nombre: "Cocina Equipada", icono: "countertops" },
+        { nombre: "Desayuno Regional", icono: "coffee" }
       ],
       galeria_fotos: [
         "fotos/benteveo/benteveo1.webp",
@@ -275,12 +275,12 @@ const MONTE_ZION_CONFIG = {
       info_tecnica: "Hasta 5 huéspedes · 70 m² - Cama Matrimonial + 3 simples",
       descripcion_larga: "Diseñado para que toda la familia disfrute. El Apart Colibrí ofrece amplios espacios, una cocina completa y un deck exterior perfecto para compartir atardeceres únicos. La naturaleza a tu alrededor y el fantástico balcon a la montaña.",
       servicios_iconos: [
-        { nombre: "Vistas Panorámicas", icono: "⛰️" },
-        { nombre: "2 aires Frio/Calor", icono: "🌡️" },
-        { nombre: "Wi-Fi", icono: "📶" },
-        { nombre: "Lavarropas", icono: "🧺" },
-        { nombre: "Cocina Completa", icono: "🍳" },
-        { nombre: "Desayuno Regional", icono: "☕" }
+        { nombre: "Vistas Panorámicas", icono: "landscape" },
+        { nombre: "2 aires Frio/Calor", icono: "thermostat" },
+        { nombre: "Wi-Fi", icono: "wifi" },
+        { nombre: "Lavarropas", icono: "local_laundry_service" },
+        { nombre: "Cocina Completa", icono: "countertops" },
+        { nombre: "Desayuno Regional", icono: "coffee" }
       ],
       galeria_fotos: [
         "fotos/colibri/colibri1.webp",
@@ -301,11 +301,11 @@ const MONTE_ZION_CONFIG = {
       info_tecnica: "Hasta 3 huéspedes · 60 m² · 3 camas simples",
       descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Aca te puedes conectar con Tigo mismo facilmente",
       servicios_iconos: [
-        { nombre: "Vistas Panorámicas", icono: "⛰️" },
-        { nombre: "Aire frio/calor", icono: "🔥" },
-        { nombre: "Wi-Fi", icono: "📶" },
-        { nombre: "Cocina completa", icono: "🍖" },
-        { nombre: "Desayuno Regional", icono: "☕" }
+        { nombre: "Vistas Panorámicas", icono: "landscape" },
+        { nombre: "Aire frio/calor", icono: "thermostat" },
+        { nombre: "Wi-Fi", icono: "wifi" },
+        { nombre: "Cocina completa", icono: "countertops" },
+        { nombre: "Desayuno Regional", icono: "coffee" }
       ],
       galeria_fotos: [
         "fotos/carpintero/carpintero1.webp",

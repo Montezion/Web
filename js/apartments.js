@@ -129,7 +129,8 @@
             apt.servicios_iconos.forEach(s => {
                 const div = document.createElement('div');
                 div.className = 'detail-icon-item';
-                div.innerHTML = `<span class="detail-icon-item__icon">${s.icono}</span><span class="detail-icon-item__name">${s.nombre}</span>`;
+                const iconHtml = (s.icono && s.icono.includes('<')) ? s.icono : `<span class="material-symbols-outlined">${s.icono}</span>`;
+                div.innerHTML = `<span class="detail-icon-item__icon">${iconHtml}</span><span class="detail-icon-item__name">${s.nombre}</span>`;
                 iconsEl.appendChild(div);
             });
         }
