@@ -254,7 +254,7 @@ const MONTE_ZION_CONFIG = {
     titulo_seccion: "Ubicación",
     subtitulo: "En el corazón de las Sierras de Catamarca\nA 20 km del centro de San Fernando del Valle de Catamarca.\nA 15 km del aeropuerto Coronel Felipe Varela",
     texto_cta: "Ver en Google Maps →",
-    video_zoom_loop: "fotos/maps.png",
+    video_zoom_loop: "fotos/maps.webp",
     google_maps_link: "https://maps.google.com/?q=Catamarca+Monte+Zion"
   },
 
