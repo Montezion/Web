@@ -469,6 +469,12 @@
                     modal.classList.remove('open');
                 });
 
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('open') && (!lightbox || !lightbox.classList.contains('open'))) {
+                        modal.classList.remove('open');
+                    }
+                });
+
                 const grid = modal.querySelector('#full-gallery-grid');
                 C.galeria.fotos.forEach((src, idx) => {
                     const item = document.createElement('div');
@@ -692,11 +698,36 @@
         const stEl = document.getElementById('ubicacion-subtitulo');
         const ctaEl = document.getElementById('ubicacion-cta');
         const videoEl = document.getElementById('ubicacion-video');
+        const fotoEl = document.getElementById('ubicacion-foto');
         const wrapper = document.getElementById('ubicacion-wrapper');
+
         if (tEl) tEl.textContent = u.titulo_seccion;
         if (stEl) stEl.textContent = u.subtitulo;
-        if (ctaEl) { ctaEl.textContent = u.texto_cta; ctaEl.href = u.google_maps_link; ctaEl.target = '_blank'; }
-        if (videoEl) { videoEl.querySelector('source').src = u.video_zoom_loop; videoEl.load(); }
+        if (ctaEl) { 
+            ctaEl.textContent = u.texto_cta; 
+            ctaEl.href = u.google_maps_link; 
+            ctaEl.target = '_blank'; 
+        }
+
+        const mediaSrc = u.foto_url || u.video_zoom_loop || u.mapa_foto;
+        const esVideo = mediaSrc && /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(mediaSrc);
+
+        if (esVideo) {
+            if (fotoEl) fotoEl.style.display = 'none';
+            if (videoEl) {
+                videoEl.style.display = 'block';
+                const source = videoEl.querySelector('source');
+                if (source) source.src = mediaSrc;
+                videoEl.load();
+            }
+        } else if (mediaSrc) {
+            if (videoEl) videoEl.style.display = 'none';
+            if (fotoEl) {
+                fotoEl.style.display = 'block';
+                fotoEl.src = mediaSrc;
+            }
+        }
+
         if (wrapper) wrapper.addEventListener('click', () => window.open(u.google_maps_link, '_blank'));
     }
 

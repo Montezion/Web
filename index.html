@@ -174,16 +174,18 @@
             <!-- ══════════════════════════════
          SECCIÓN 7: UBICACIÓN
          ══════════════════════════════ -->
-            <section id="ubicacion" aria-label="Ubicación">
+            <section id="ubicacion" class="location-section" aria-label="Ubicación">
+                <div class="section-header location-header">
+                    <h2 id="ubicacion-titulo" class="section-title">Ubicación</h2>
+                    <p id="ubicacion-subtitulo" class="section-subtitle"></p>
+                </div>
                 <div id="ubicacion-wrapper" class="location-wrapper" role="link" tabindex="0"
                     aria-label="Ver en Google Maps">
-                    <video id="ubicacion-video" class="location-video" autoplay loop muted playsinline
-                        aria-hidden="true">
+                    <img id="ubicacion-foto" class="location-media" src="" alt="Ubicación Monte Zion" style="display:none;">
+                    <video id="ubicacion-video" class="location-media" autoplay loop muted playsinline style="display:none;">
                         <source src="" type="video/mp4">
                     </video>
                     <div class="location-overlay">
-                        <h2 id="ubicacion-titulo" class="location-overlay__title"></h2>
-                        <p id="ubicacion-subtitulo" class="location-overlay__sub"></p>
                         <a id="ubicacion-cta" class="location-overlay__cta" href="#" target="_blank"
                             rel="noopener noreferrer"></a>
                     </div>
