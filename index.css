@@ -1127,6 +1127,22 @@ h4 {
   aspect-ratio: 16 / 7;
   overflow: hidden;
   cursor: pointer;
+  background: var(--color-fondo-secundario);
+}
+
+@media (max-width: 768px) {
+  .location-wrapper {
+    aspect-ratio: 4 / 3;
+    min-height: 280px;
+  }
+}
+
+.location-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .location-video {
@@ -1139,17 +1155,23 @@ h4 {
 .location-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  transition: background 0.3s;
+  justify-content: flex-end;
+  padding-bottom: 24px;
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .location-overlay {
+    padding-bottom: 18px;
+  }
 }
 
 .location-overlay:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .location-overlay__title {
@@ -1170,24 +1192,27 @@ h4 {
 .location-overlay__cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background: var(--color-boton-reserva-fondo);
   color: var(--color-boton-reserva-texto);
   font-weight: 700;
   font-size: 0.85rem;
-  padding: 10px 24px;
-  border-radius: 6px;
+  padding: 12px 28px;
+  border-radius: 30px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .location-overlay__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px var(--color-boton-reserva-glow);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px var(--color-boton-reserva-glow);
+  background: var(--color-acento-hover);
 }
 
-/* Location placeholder (quando no hay video) */
+/* Location placeholder (cuando no hay video/foto) */
 .location-placeholder {
   width: 100%;
   aspect-ratio: 16 / 7;
