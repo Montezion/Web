@@ -701,26 +701,27 @@
 
         gridEl.innerHTML = '';
         const tarjetas = C.resenas.tarjetas || [];
+
+        // Cálculo dinámico de columnas simétricas para PC
+        const len = tarjetas.length;
+        let cols = 4;
+        if (len === 1) cols = 1;
+        else if (len === 2) cols = 2;
+        else if (len === 3) cols = 3;
+        else if (len % 3 === 0 && len % 4 !== 0) cols = 3;
+        else cols = 4;
+
+        gridEl.style.setProperty('--reviews-cols', cols);
+
         tarjetas.forEach(res => {
             const div = document.createElement('div');
-            div.className = 'review-card activity-card';
+            div.className = 'review-card';
+            const src = typeof res === 'string' ? res : res.foto;
 
-            const fotoHTML = res.foto
-                ? `<img src="${res.foto}" alt="${res.nombre || 'Reseña Monte Zion'}" class="review-card__photo activity-card__photo" loading="lazy">`
-                : `<div class="activity-card__photo-placeholder">⭐</div>`;
+            div.innerHTML = src
+                ? `<img src="${src}" alt="Reseña Monte Zion" class="review-card__photo" loading="lazy">`
+                : `<div class="review-card__placeholder">⭐</div>`;
 
-            const estrellasHTML = res.estrellas
-                ? `<div class="review-card__stars">${'★'.repeat(res.estrellas)}</div>`
-                : '';
-
-            div.innerHTML = `
-                ${fotoHTML}
-                <div class="review-card__content">
-                    ${estrellasHTML}
-                    <h3 class="review-card__title activity-card__title">${res.nombre || ''}</h3>
-                    <p class="review-card__desc activity-card__desc">${res.comentario || ''}</p>
-                </div>
-            `;
             gridEl.appendChild(div);
         });
     }

@@ -240,30 +240,10 @@ const MONTE_ZION_CONFIG = {
   resenas: {
     titulo_seccion: "Reseñas de Clientes",
     tarjetas: [
-      {
-        foto: "fotos/reseña1.webp",
-        nombre: "María & Carlos",
-        comentario: "Excelente estadía en la montaña. Un lugar increíble para descansar y desconectar.",
-        estrellas: 5
-      },
-      {
-        foto: "fotos/reseña2.webp",
-        nombre: "Familia Gómez",
-        comentario: "Atención impecable y vistas soñadas. Los apartamentos superaron nuestras expectativas.",
-        estrellas: 5
-      },
-      {
-        foto: "fotos/reseña3.webp",
-        nombre: "Juan Pablo R.",
-        comentario: "La paz de la sierra combinada con la mejor comodidad. Volveremos sin dudas.",
-        estrellas: 5
-      },
-      {
-        foto: "fotos/reseña4.webp",
-        nombre: "Sofía M.",
-        comentario: "Cálido, limpio y con una vista espectacular a la montaña. 100% recomendado.",
-        estrellas: 5
-      }
+      { foto: "fotos/reseña1.webp" },
+      { foto: "fotos/reseña2.webp" },
+      { foto: "fotos/reseña3.webp" },
+      { foto: "fotos/reseña4.webp" }
     ]
   },
 
