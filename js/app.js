@@ -691,6 +691,40 @@
         }, { passive: true });
     }
 
+    // ── 9.5. Reseñas ──────────────────────────────────────────
+    function construirResenas() {
+        const gridEl = document.getElementById('resenas-grid');
+        const tEl = document.getElementById('resenas-titulo');
+        if (!C.resenas) return;
+        if (tEl && C.resenas.titulo_seccion) tEl.textContent = C.resenas.titulo_seccion;
+        if (!gridEl) return;
+
+        gridEl.innerHTML = '';
+        const tarjetas = C.resenas.tarjetas || [];
+        tarjetas.forEach(res => {
+            const div = document.createElement('div');
+            div.className = 'review-card activity-card';
+
+            const fotoHTML = res.foto
+                ? `<img src="${res.foto}" alt="${res.nombre || 'Reseña Monte Zion'}" class="review-card__photo activity-card__photo" loading="lazy">`
+                : `<div class="activity-card__photo-placeholder">⭐</div>`;
+
+            const estrellasHTML = res.estrellas
+                ? `<div class="review-card__stars">${'★'.repeat(res.estrellas)}</div>`
+                : '';
+
+            div.innerHTML = `
+                ${fotoHTML}
+                <div class="review-card__content">
+                    ${estrellasHTML}
+                    <h3 class="review-card__title activity-card__title">${res.nombre || ''}</h3>
+                    <p class="review-card__desc activity-card__desc">${res.comentario || ''}</p>
+                </div>
+            `;
+            gridEl.appendChild(div);
+        });
+    }
+
     // ── 10. Ubicación ────────────────────────────────────────
     function construirUbicacion() {
         const u = C.ubicacion;
@@ -830,6 +864,7 @@
             construirServicios();
             construirQueHacer();
             construirGaleria();
+            construirResenas();
             construirUbicacion();
             construirFooter();
             construirWhatsAppFAB();

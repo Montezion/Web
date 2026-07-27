@@ -1115,6 +1115,96 @@ h4 {
 
 
 /* ═══════════════════════════════════════════════════════════
+   RESEÑAS DE CLIENTES
+   ═══════════════════════════════════════════════════════════ */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--color-fondo-tarjeta);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--color-borde);
+  box-shadow: 0 4px 15px rgba(59, 35, 29, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(156, 50, 43, 0.15);
+  border-color: var(--color-acento);
+}
+
+.review-card__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--color-borde);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover .review-card__photo {
+  transform: scale(1.02);
+}
+
+.review-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.review-card__stars {
+  color: var(--color-acento);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.review-card__title {
+  font-family: var(--fuente-titulos);
+  font-size: 1.05rem;
+  color: var(--color-texto-principal);
+  font-weight: 600;
+  margin: 0;
+}
+
+.review-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .review-card__title {
+    font-size: 0.92rem;
+  }
+
+  .review-card__desc {
+    font-size: 0.78rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
    UBICACIÓN
    ═══════════════════════════════════════════════════════════ */
 #ubicacion {
@@ -1166,7 +1256,13 @@ h4 {
 
 @media (max-width: 768px) {
   .location-overlay {
-    padding-bottom: 18px;
+    padding-bottom: 14px;
+  }
+
+  .location-overlay__cta {
+    font-size: 0.72rem;
+    padding: 8px 18px;
+    letter-spacing: 0.04em;
   }
 }
 

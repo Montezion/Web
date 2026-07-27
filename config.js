@@ -50,6 +50,7 @@ const MONTE_ZION_CONFIG = {
       { etiqueta: "Servicios", anclaje: "#servicios" },
       { etiqueta: "Actividades", anclaje: "#actividades" },
       { etiqueta: "Galería", anclaje: "#galeria" },
+      { etiqueta: "Reseñas", anclaje: "#resenas" },
       { etiqueta: "Ubicación", anclaje: "#ubicacion" }
     ],
     boton_reservar: {
@@ -234,7 +235,40 @@ const MONTE_ZION_CONFIG = {
   },
 
   // ──────────────────────────────────────────────────────────
-  // 11. UBICACIÓN
+  // 11. SECCIÓN RESEÑAS DE CLIENTES
+  // ──────────────────────────────────────────────────────────
+  resenas: {
+    titulo_seccion: "Reseñas de Clientes",
+    tarjetas: [
+      {
+        foto: "fotos/reseña1.webp",
+        nombre: "María & Carlos",
+        comentario: "Excelente estadía en la montaña. Un lugar increíble para descansar y desconectar.",
+        estrellas: 5
+      },
+      {
+        foto: "fotos/reseña2.webp",
+        nombre: "Familia Gómez",
+        comentario: "Atención impecable y vistas soñadas. Los apartamentos superaron nuestras expectativas.",
+        estrellas: 5
+      },
+      {
+        foto: "fotos/reseña3.webp",
+        nombre: "Juan Pablo R.",
+        comentario: "La paz de la sierra combinada con la mejor comodidad. Volveremos sin dudas.",
+        estrellas: 5
+      },
+      {
+        foto: "fotos/reseña4.webp",
+        nombre: "Sofía M.",
+        comentario: "Cálido, limpio y con una vista espectacular a la montaña. 100% recomendado.",
+        estrellas: 5
+      }
+    ]
+  },
+
+  // ──────────────────────────────────────────────────────────
+  // 12. UBICACIÓN
   // ──────────────────────────────────────────────────────────
   ubicacion: {
     titulo_seccion: "Ubicación",
