@@ -332,7 +332,7 @@ const MONTE_ZION_CONFIG = {
       hero_foto: "fotos/carpintero/carpintero-hero.webp",
       titulo_principal: "Carpintero",
       info_tecnica: "Hasta 3 huéspedes · 60 m² · 3 camas simples",
-      descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Aca te puedes conectar con Tigo mismo facilmente",
+      descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Ideal para desconectar del ritmo diario y conectar con la naturaleza",
       servicios_iconos: [
         { nombre: "Vistas Panorámicas", icono: "landscape" },
         { nombre: "Aire frio/calor", icono: "thermostat" },
