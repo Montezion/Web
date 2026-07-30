@@ -374,17 +374,17 @@ const MONTE_ZION_CONFIG = {
     paso_1_seleccion: [
       {
         id: "apart-1",
-        precio_noche: 45000,
+        precio_noche: 80000,
         capacidad_maxima: 2
       },
       {
         id: "apart-2",
-        precio_noche: 65000,
+        precio_noche: 125000,
         capacidad_maxima: 5
       },
       {
         id: "apart-3",
-        precio_noche: 85000,
+        precio_noche: 90000,
         capacidad_maxima: 3
       }
     ],
