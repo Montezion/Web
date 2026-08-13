@@ -228,7 +228,7 @@ const MONTE_ZION_CONFIG = {
       "fotos/galeria-25.webp",
       "fotos/galeria-26.webp",
       "fotos/galeria-27.webp",
-      fotos/galeria-28.webp"",
+      "fotos/galeria-28.webp",
       "fotos/galeria-29.webp",
       "fotos/galeria-31.webp"
     ]
