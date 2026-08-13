@@ -120,7 +120,7 @@ const MONTE_ZION_CONFIG = {
       {
         titulo: "Comodidades",
         icono: "hotel",
-        especificaciones: ["Wi-Fi", "Las medialunas más ricas", "Aire Frio/Calor", "Puedes traer tu mascota"]
+        especificaciones: ["Wi-Fi", "Las medialunas más ricas", "Aire Frio/Calor", "Somos Pet Friendly"]
       },
       {
         titulo: "Equipamiento",
@@ -130,12 +130,12 @@ const MONTE_ZION_CONFIG = {
       {
         titulo: "Espacios",
         icono: "landscape",
-        especificaciones: ["Balcon con vista a la montaña", "Rio a 10 minutos a pie", "Senderos para caminatas", "Mirador de estrellas"]
+        especificaciones: ["Balcón con vista a la montaña", "Río a 15 minutos a pie", "Senderos para caminatas", "Terrazas al cielo"]
       },
       {
         titulo: "Actividades",
         icono: "hiking",
-        especificaciones: ["Senderismo", "Rio a 10 minutos", "Cabalgatas", "Yoga al amanecer"]
+        especificaciones: ["Senderismo", "Río a 15 minutos", "Cabalgatas", "Yoga al amanecer"]
       },
       {
         titulo: "Traslados y Excursiones",
@@ -143,7 +143,7 @@ const MONTE_ZION_CONFIG = {
         especificaciones: [
           "Coordinación de traslados al aeropuerto y ciudad de Catamarca",
           "Excursiones para recorrer distintos paisajes y destinos de la provincia",
-          "Servicios brindados por prestadores externos (sujetos a disponibilidad)"
+          "Estos servicios son brindados por prestadores externos (sujetos a disponibilidad)"
         ]
       },
       {
