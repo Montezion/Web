@@ -273,7 +273,7 @@ const MONTE_ZION_CONFIG = {
   paginas_detalle: [
     {
       id: "apart-1",
-      hero_foto: "fotos/benteveo/benteveo-hero.jpg",
+      hero_foto: "fotos/colibri/colibri1.webp",
       titulo_principal: "Benteveo",
       info_tecnica: "Hasta 2 huéspedes · 45 m² · Cama Doble plaza",
       descripcion_larga: "Sumérgete en la experiencia definitiva de la montaña. El Apart Benteveo combina discreción con la autenticidad natural. Desde su amplio balcón, su inigualable terraza, las vistas a las cumbres de Catamarca te acompañarán en cada momento. Un refugio íntimo y exclusivo, diseñado para parejas que buscan reconectarse con lo esencial.",
@@ -303,7 +303,7 @@ const MONTE_ZION_CONFIG = {
     },
     {
       id: "apart-2",
-      hero_foto: "fotos/colibri/colibri-hero.webp",
+      hero_foto: "fotos/colibri/colibri6.webp",
       titulo_principal: "Colibrí",
       info_tecnica: "Hasta 5 huéspedes · 70 m² - Cama Matrimonial + 3 simples",
       descripcion_larga: "Diseñado para que toda la familia disfrute. El Apart Colibrí ofrece amplios espacios, una cocina completa y un deck exterior perfecto para compartir atardeceres únicos. La naturaleza a tu alrededor y el fantástico balcon a la montaña.",
@@ -316,7 +316,7 @@ const MONTE_ZION_CONFIG = {
         { nombre: "Desayuno Regional", icono: "coffee" }
       ],
       galeria_fotos: [
-        "fotos/colibri/colibri1.webp",
+        "",
         "fotos/colibri/colibri2.webp",
         "fotos/colibri/colibri3.webp",
         "fotos/colibri/colibri4.webp",
@@ -329,7 +329,7 @@ const MONTE_ZION_CONFIG = {
     },
     {
       id: "apart-3",
-      hero_foto: "fotos/carpintero/carpintero-hero.webp",
+      hero_foto: "fotos/carpintero/carpintero2.webp",
       titulo_principal: "Carpintero",
       info_tecnica: "Hasta 3 huéspedes · 60 m² · 3 camas simples",
       descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Ideal para desconectar del ritmo diario y conectar con la naturaleza",
@@ -356,7 +356,7 @@ const MONTE_ZION_CONFIG = {
         "fotos/carpintero/carpintero13.webp",
         "fotos/carpintero/carpintero14.webp",
         "fotos/carpintero/carpintero15.webp",
-        "fotos/carpintero/carpintero16.webp"
+        ""
       ]
     }
   ],
