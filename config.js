@@ -273,7 +273,7 @@ const MONTE_ZION_CONFIG = {
   paginas_detalle: [
     {
       id: "apart-1",
-      hero_foto: "fotos/colibri/colibri1.webp",
+      hero_foto: "fotos/benteveo/benteveo-hero.webp",
       titulo_principal: "Benteveo",
       info_tecnica: "Hasta 2 huéspedes · 45 m² · Cama Doble plaza",
       descripcion_larga: "Sumérgete en la experiencia definitiva de la montaña. El Apart Benteveo combina discreción con la autenticidad natural. Desde su amplio balcón, su inigualable terraza, las vistas a las cumbres de Catamarca te acompañarán en cada momento. Un refugio íntimo y exclusivo, diseñado para parejas que buscan reconectarse con lo esencial.",
