@@ -275,7 +275,7 @@ const MONTE_ZION_CONFIG = {
       id: "apart-1",
       hero_foto: "fotos/benteveo/benteveo-hero.webp",
       titulo_principal: "Benteveo",
-      info_tecnica: "Hasta 2 huéspedes · 45 m² · Cama Doble plaza",
+      info_tecnica: "Hasta 2 huéspedes · 45 m² · Cama Matrimonial",
       descripcion_larga: "Sumérgete en la experiencia definitiva de la montaña. El Apart Benteveo combina discreción con la autenticidad natural. Desde su amplio balcón, su inigualable terraza, las vistas a las cumbres de Catamarca te acompañarán en cada momento. Un refugio íntimo y exclusivo, diseñado para parejas que buscan reconectarse con lo esencial.",
       servicios_iconos: [
         { nombre: "Vistas Panorámicas", icono: "landscape" },
@@ -330,7 +330,7 @@ const MONTE_ZION_CONFIG = {
       id: "apart-3",
       hero_foto: "fotos/carpintero/carpintero2.webp",
       titulo_principal: "Carpintero",
-      info_tecnica: "Hasta 3 huéspedes · 60 m² · Cama matrimonial + cama individual",
+      info_tecnica: "Hasta 3 huéspedes · 60 m² · Cama doble + cama individual",
       descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Ideal para desconectar del ritmo diario y conectar con la naturaleza",
       servicios_iconos: [
         { nombre: "Vistas Panorámicas", icono: "landscape" },
