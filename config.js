@@ -311,7 +311,6 @@ const MONTE_ZION_CONFIG = {
         { nombre: "Vistas Panorámicas", icono: "landscape" },
         { nombre: "2 aires Frio/Calor", icono: "thermostat" },
         { nombre: "Wi-Fi", icono: "wifi" },
-        { nombre: "Lavarropas", icono: "local_laundry_service" },
         { nombre: "Cocina Completa", icono: "countertops" },
         { nombre: "Desayuno Regional", icono: "coffee" }
       ],
@@ -338,7 +337,8 @@ const MONTE_ZION_CONFIG = {
         { nombre: "Aire frio/calor", icono: "thermostat" },
         { nombre: "Wi-Fi", icono: "wifi" },
         { nombre: "Cocina completa", icono: "countertops" },
-        { nombre: "Desayuno Regional", icono: "coffee" }
+        { nombre: "Desayuno Regional", icono: "coffee" },
+        { nombre: "Lavarropas", icono: "local_laundry_service" }
       ],
       galeria_fotos: [
         "fotos/carpintero/carpintero1.webp",
