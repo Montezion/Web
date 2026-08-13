@@ -330,7 +330,7 @@ const MONTE_ZION_CONFIG = {
       id: "apart-3",
       hero_foto: "fotos/carpintero/carpintero2.webp",
       titulo_principal: "Carpintero",
-      info_tecnica: "Hasta 3 huéspedes · 60 m² · 3 camas simples",
+      info_tecnica: "Hasta 3 huéspedes · 60 m² · Cama matrimonial + cama individual",
       descripcion_larga: "La experiencia más auténtica de Monte Zion. Rodeada de una vista exuberante y el sonido del viento y los pajaros. Ideal para desconectar del ritmo diario y conectar con la naturaleza",
       servicios_iconos: [
         { nombre: "Vistas Panorámicas", icono: "landscape" },
